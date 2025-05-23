@@ -20,7 +20,7 @@ func formatLoanInfo(record *db.LoanRecord) string {
 		created = record.CreatedAt.Time.Format("2006-01-02 15:04:05")
 	}
 
-	return fmt.Sprintf(`✅ Чек найден:
+	return fmt.Sprintf(`✅ Запись в базе данных в форме найдена:
 
 👤 Клиент: %s %s %s
 📞 Телефон: %s
@@ -57,7 +57,7 @@ func HandleMessage(bot *tgbotapi.BotAPI, msg *tgbotapi.Message) {
 		records := db.FindClientsFromMessage(queryText)
 
 		if len(records) == 0 {
-			reply := fmt.Sprintf("❌ Чек не найден по клиенту %s %s %s", client.LastName, client.FirstName, client.MiddleName)
+			reply := fmt.Sprintf("❌ Запсь не найден по клиенту %s %s %s", client.LastName, client.FirstName, client.MiddleName)
 			bot.Send(tgbotapi.NewMessage(msg.Chat.ID, reply))
 			continue
 		}
