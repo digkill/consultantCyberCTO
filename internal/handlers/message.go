@@ -57,7 +57,7 @@ func HandleMessage(bot *tgbotapi.BotAPI, msg *tgbotapi.Message) {
 		records := db.FindClientsFromMessage(queryText)
 
 		if len(records) == 0 {
-			reply := fmt.Sprintf("❌ Запсь не найден по клиенту %s %s %s", client.LastName, client.FirstName, client.MiddleName)
+			reply := fmt.Sprintf("❌ Запсь не найдена по клиенту %s %s %s", client.LastName, client.FirstName, client.MiddleName)
 			bot.Send(tgbotapi.NewMessage(msg.Chat.ID, reply))
 			continue
 		}
